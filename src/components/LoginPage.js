@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect } from 'react-redux'
-import {startLogin} from '../actions/auth'
+import {startLogin, login} from '../actions/auth'
 
 export const LoginPage = ({startLogin}) => (
   <div className="box-layout">
@@ -17,3 +17,5 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(undefined, mapDispatchToProps)(LoginPage)
+
+//usering login() instead of firebase login because of internet loss :(
