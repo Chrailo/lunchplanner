@@ -1,13 +1,21 @@
 .flex-body {
   display: flex;
   flex-direction: row;        
+
 }
 
 .flex-row {  
-  display:flex;    
+  display:flex;      
+  
+  
 }
 
 .flex-column {
   flex-direction: column;  
   display:flex;  
+  
+}
+
+.suggestion-card {
+  background: $off-white;
 }

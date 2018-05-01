@@ -4,17 +4,18 @@ import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
 
 
 const Suggestion = (props) => (
-  <div className="flex-body">
+  <div className="suggestion-card input-group__item">
     <div className="flex-row">
-      <textarea value={props.suggestion} readOnly  /> 
-    </div>
+      <p className="input-group__item">{props.suggestion}</p>
+    
     <div className="flex-column">
-    <div>
-      votes: {props.votes}
-    </div>
-    <div>
-      <FaThumbsOUp />      
-    </div>
+      <div>
+        votes: {props.votes}
+      </div>
+      <div>
+        <FaThumbsOUp />      
+      </div>
+      </div>
     </div>
   </div>
 )

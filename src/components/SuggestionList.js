@@ -2,7 +2,7 @@ import React from 'react';
 import Suggestion from './Suggestion';
 
 const SuggestionList = () => (
-  <div>
+  <div className="">
     <Suggestion suggestion={'Matsmedjan'} />
     <Suggestion suggestion={'Royal Thai'} />
     <Suggestion suggestion={'Landbron'} />

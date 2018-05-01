@@ -27,11 +27,13 @@ class EventPage extends React.Component {
   render() { 
     return (     
       <div>
-      <h3>{this.props.match.params.event}</h3>
-      <div className="flex-body">
+      <h3>{this.props.match.params.event}</h3> 
+      <div className="content-container">
+        <div className="flex-body">
         <ParticipantList />
         <SuggestionList />
         <DriverList />
+        </div>
       </div>
     </div> 
   ) 
