@@ -1,8 +1,8 @@
+import uuid from 'uuid'
 
-
-export const addTeam = (team) => ({
-  type: 'ADD_TEAM',
-  team,
+export const addTeam = (name) => ({
+  type: 'ADD_TEAM',   
+  team : name, 
 })
 
 export const setTeams = (teams) => ({

@@ -1,7 +1,8 @@
 
-export const addEvent = (event) => ({
+export const addEvent = (event, team) => ({
   type:'ADD_EVENT',
   event,
+  team,
 })
 
 export const setEvents = (events) => ({

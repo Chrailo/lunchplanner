@@ -32,7 +32,7 @@ export  class TeamListPage extends React.Component {
   render () {
     return (
       <div>
-        <input type='text' value={this.state.teamname} onChange={this.onTeamNameChange} />
+        <input type='text'  value={this.state.teamname} onChange={this.onTeamNameChange} />
         <button onClick={this.onTeamAdd}>New Team</button>
         {this.props.teams.map((team, index) => <Team key={index} team={team} />)}
       </div>

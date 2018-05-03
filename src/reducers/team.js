@@ -1,4 +1,4 @@
-const teamReducerDefaultState = ['ContribeAB', 'Softhouse']
+const teamReducerDefaultState = ['ContribeAB','Softhouse']
 
 export default (state = teamReducerDefaultState, action) => {
   switch (action.type) {
@@ -8,7 +8,7 @@ export default (state = teamReducerDefaultState, action) => {
       action.team,
     ]
     case 'SET_TEAMS':
-      return action.teams
+      return action.teams    
     default:
     return state
   }  

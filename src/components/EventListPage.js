@@ -11,6 +11,7 @@ export class EventListPage extends React.Component {
       eventName:''
      }     
      //this.props.setEvents([])
+     console.log(props)
   }  
 
   onEventChange = (e) => {
@@ -19,7 +20,7 @@ export class EventListPage extends React.Component {
   }
 
   onEventAdd = () => {
-    this.props.addEvent(this.state.eventName)
+    this.props.addEvent(this.state.eventName, this.props.team)
     this.setState(() => ({
       eventName:''
     }))
@@ -30,8 +31,8 @@ export class EventListPage extends React.Component {
     return ( 
       <div>
         <input type='text' value={this.state.eventName} onChange={this.onEventChange} />
-        <button onClick={this.onEventAdd}>New Event</button>
-         {  this.props.events && this.props.events.map((eventName, index) => <Event key={index} eventName={eventName} />)  } 
+        <button onClick={this.onEventAdd}>New Event</button>        
+         {  this.props.events && this.props.events.map(({event, team}, index) => <Event key={index} eventName={event} />)  } 
       </div>
      )
   }
@@ -39,12 +40,14 @@ export class EventListPage extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    events: state.events
+    events: state.events.filter((event) => {
+      return event.team === props.team
+    })
   }
 }
  
-const mapDispatchToProps = (dispatch) => ({
-  addEvent : (eventName) => dispatch(addEvent(eventName)),
+const mapDispatchToProps = (dispatch, props) => ({
+  addEvent : (eventName, team) => dispatch(addEvent(eventName, team )),
  // setEvents : (events) => dispatch(setEvents(events))
 })
 
