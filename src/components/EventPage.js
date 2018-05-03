@@ -29,10 +29,10 @@ class EventPage extends React.Component {
       <div>
       <h3>{this.props.match.params.event}</h3> 
       <div className="content-container">
-        <div className="flex-body">
-        <ParticipantList />
-        <SuggestionList />
-        <DriverList />
+        <div className="grid-container">
+          <ParticipantList />
+          <SuggestionList />
+          <DriverList />
         </div>
       </div>
     </div> 

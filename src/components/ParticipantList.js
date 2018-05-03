@@ -2,7 +2,7 @@ import React from 'react'
 import FaCab from 'react-icons/lib/fa/cab'
 
 const ParticipantList = () => (
-  <div className="input-group__item">
+  <div id="participants" className="main-column" >
     <ul style={{listStyle: 'none',  padding:0, margin:0}}>
       <li>Kalle</li>
       <li>Nisse <FaCab /></li>
