@@ -1,8 +1,10 @@
 import React from 'react'
 import FaCab from 'react-icons/lib/fa/cab'
+import {connect} from 'react-redux'
 
-const ParticipantList = () => (
+export const ParticipantList = (props) => (
   <div id="participants" className="main-column" >
+    {props.participants}
     <ul style={{listStyle: 'none',  padding:0, margin:0}}>
       <li>Kalle</li>
       <li>Nisse <FaCab /></li>
@@ -17,4 +19,10 @@ const ParticipantList = () => (
   </div>
 )
  
-export default ParticipantList;
+const mapStateToProps = (state) => {
+  return {
+    participants : state.participants
+  }
+}
+
+export default connect(mapStateToProps)(ParticipantList);

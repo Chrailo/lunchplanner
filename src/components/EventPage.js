@@ -12,8 +12,8 @@ class EventPage extends React.Component {
       votes : 0,
       votedFor : '',
    }
-  }
-  
+  }  
+
   onVote = (votedFor) => {
     console.log(votedFor)
     this.setState((prevState) => ({
