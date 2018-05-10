@@ -14,7 +14,7 @@ import {firebase} from './firebase/firebase'
 import { log } from 'util';
 import LoadingPage from './components/LoadingPage'
 // import './playground/promises'
-import {setTeams } from './actions/team'
+import {beginLoadTeams } from './actions/team'
 
 
 const store = configureStore()
@@ -37,8 +37,10 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    store.dispatch(login(user.uid))
-    store.dispatch(setTeams(store.getState().teams))    
+    store.dispatch(login(user.uid, user.displayName))
+    //console.log(user)
+    //store.dispatch(setTeams(store.getState().teams))    
+    store.dispatch(beginLoadTeams())
       renderApp()
       if (history.location.pathname === '/') {
         history.push('/dashboard')

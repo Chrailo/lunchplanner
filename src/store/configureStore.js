@@ -12,7 +12,7 @@ export default () => {
   const store = createStore(
     combineReducers({
       events: eventReducer,
-      teams: teamReducer,
+      team: teamReducer,
       auth: authReducer,      
       participants: participantReducer,
       members: memberReducer,

@@ -1,7 +1,8 @@
 import React from 'react'
 import Team from './Team'
 import { connect } from 'react-redux'
-import {addTeam} from '../actions/team'
+import {beginAddTeam} from '../actions/team'
+import LoadingPage from './LoadingPage'
 
 
 
@@ -34,7 +35,7 @@ export  class TeamListPage extends React.Component {
       <div>
         <input type='text'  value={this.state.teamname} onChange={this.onTeamNameChange} />
         <button onClick={this.onTeamAdd}>New Team</button>
-        {this.props.teams.map((team, index) => <Team key={index} team={team} />)}
+        { this.props.isLoading ? <LoadingPage /> : this.props.teams.map((team, index) => <Team key={index} team={team} />)}
       </div>
     )
   }
@@ -42,12 +43,13 @@ export  class TeamListPage extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    teams: state.teams,
+    teams: state.team.teams,
+    isLoading: state.team.isLoading
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addTeam : (teamname) => dispatch(addTeam(teamname))
+  addTeam : (teamname) => dispatch(beginAddTeam(teamname))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamListPage)
