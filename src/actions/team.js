@@ -53,66 +53,27 @@ export const beginLoadTeams = () => {
   return  (dispatch, getState) => {  
     dispatch(loadTeamBegin())
     
-    database.ref().child(`members/${getState().auth.uid}/teams`)
+    return database.ref().child(`members/${getState().auth.uid}/teams`)
       .once('value')
       .then( (snap) => {  
           var teams = []     
-          snap.forEach((childSnap) => {            
-             database.ref().child(`teams/${childSnap.key}`)
-              .once('value')
-              .then( (teamsnap) => {
-                teams.push({
-                  id:teamsnap.key,
-                  ...teamsnap.val(),
-                  }
-                )                  
-              })
+          console.log(snap.val())
+          var promises = Object.keys(snap.val()).map((key) => {
+            return  database.ref().child(`teams/${key}`)
+                  .once('value')
+          })
+
+          Promise.all(promises).then((snaps) => {
+            console.log("PromiseAll")
+            snaps.forEach((snap) => {
+              teams.push({
+                id:snap.key,
+                ...snap.val(),
+                }
+              ) 
             })            
-            return teams            
-        }).then((teams) =>{
-          console.log(teams)
-        //  console.log([{id:1, name:"team"}, {id:2, name:"team2"}])        
-           dispatch(setTeams(teams))
-        })  
-
-
-    // const teamids = database.ref().child(`members/${getState().auth.uid}/teams`);
-    //  teamids.once('value').then((snap) => {
-    //   console.log(snap.val());
-    //   snap.forEach((childSnap) => {
-    //     console.log(childSnap.key)
-    //   })
-    //   return "hej"
-    // }).then((str) => { console.log(str)})
-    //  teamids.on('child_added', snap => {
-    //   console.log('Snap:'+snap.key)
-    //   let teams = []
-    //   database.ref().child(`teams/${snap.key}`).once('value', (snep) => {
-    //      teams.push({
-    //        id: snep.key,
-    //        ...snep.val()
-    //      })
-    //     console.log(teams)
-    //   } 
-    // )
-    //   dispatch(setTeams(teams))
-    // })
-    
-    
-   // console.log(teamids)
-
-    // return database.ref('teams')
-    //   .once('value')
-    //   .then((snapshot) => {
-    //     const teams = []
-    //     snapshot.forEach((childSnapshot) => {          
-    //       teams.push({
-    //         id: childSnapshot.key,
-    //         ...childSnapshot.val()
-    //       })
-    //     })
-    //     dispatch(setTeams(teams))
-    //   })
-  
+            dispatch(setTeams(teams))
+          })        
+        })    
   }
 }
