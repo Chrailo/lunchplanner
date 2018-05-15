@@ -35,13 +35,13 @@ export  class TeamListPage extends React.Component {
       <div>
         <input type='text'  value={this.state.teamname} onChange={this.onTeamNameChange} />
         <button onClick={this.onTeamAdd}>New Team</button>
-        { this.props.isLoading ? <LoadingPage /> : this.props.teams.map((team, index) => <Team key={index} team={team} />)}
+        { this.props.isLoading ? <LoadingPage /> : this.props.teams.map((team, index) => <Team key={index} team={team.name} />)}
       </div>
     )
   }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state, props) => {  
   return {
     teams: state.team.teams,
     isLoading: state.team.isLoading

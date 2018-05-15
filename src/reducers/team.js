@@ -1,7 +1,7 @@
 //const teamReducerDefaultState = ['ContribeAB','Softhouse']
 const teamReducerDefaultState = {
   isLoading:false,
-  teams:[]
+  teams:[{id:1, name:"hej"}]
 }
 
 export default (state = teamReducerDefaultState, action) => {
@@ -13,9 +13,7 @@ export default (state = teamReducerDefaultState, action) => {
          ...state.teams,
           action.team,
         ]
-    }
-    
-
+    }    
     case 'LOAD_TEAM_START':
     return {
       ...state,
